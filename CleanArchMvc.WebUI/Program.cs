@@ -1,3 +1,6 @@
+using ClearArchMvc.Infra.Data.Context;
+using Microsoft.EntityFrameworkCore;
+
 namespace CleanArchMvc.WebUI
 {
     public class Program
@@ -5,6 +8,13 @@ namespace CleanArchMvc.WebUI
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // Configuração da string de conexão
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            // Registro do DbContext no contêiner de serviços
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(connectionString));
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
