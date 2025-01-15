@@ -12,6 +12,8 @@ namespace CleanArchMvc.Domain.Entities
 
         public string Name { get; private set; }
 
+        public Category() { }
+
         public Category(string name) {
 
             ValidateDomain(name);
@@ -22,6 +24,7 @@ namespace CleanArchMvc.Domain.Entities
         {
 
             DomainExceptionValidation.When(id < 0, "Invalid id value");
+            Id = id;
             ValidateDomain(name);
 
         }
