@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanArchMvc.Application.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,16 @@ namespace CleanArchMvc.Application.Interfaces
 {
     public interface IProductService
     {
+        Task<IEnumerable<ProductDTO>> GetProducts();
 
+        Task<ProductDTO> GetById(int? id);
+
+        Task<IEnumerable<ProductDTO>> GetProductCategory(int? id);
+
+        Task Add(ProductDTO productDTO);
+
+        Task Update(ProductDTO productDTO);
+
+        Task Remove(int? id);
     }
 }

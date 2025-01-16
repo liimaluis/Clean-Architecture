@@ -11,7 +11,7 @@ namespace CleanArchMvc.Application.Interfaces
     {
         Task<IEnumerable<CategoryDTO>> GetCategories();
 
-        Task<CategoryDTO> GetById();
+        Task<CategoryDTO> GetById(int? id);
 
         Task Add(CategoryDTO categoryDTO);
 
