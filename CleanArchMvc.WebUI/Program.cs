@@ -1,4 +1,5 @@
 using ClearArchMvc.Infra.Data.Context;
+using ClearArchMvc.Infra.Ioc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchMvc.WebUI
@@ -15,6 +16,9 @@ namespace CleanArchMvc.WebUI
             // Registro do DbContext no contêiner de serviços
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
+            // Adiciona o servicos configurados em Dependecy Injection
+            builder.Services.AddInfrastructure(builder.Configuration);
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -38,7 +42,7 @@ namespace CleanArchMvc.WebUI
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Categories}/{action=Index}/{id?}");
 
             app.Run();
         }
