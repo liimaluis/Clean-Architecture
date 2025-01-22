@@ -68,6 +68,11 @@ namespace CleanArchMvc.Domain.Entities
             Image = image;
         }
 
+        public void Update(string name, string description, decimal price, int stock, string image, int categoryId)
+        {
+            throw new NotImplementedException();
+        }
+
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
