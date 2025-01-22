@@ -28,19 +28,13 @@ namespace ClearArchMvc.Infra.Data.Repositories
 
         public async Task<Product> GetByIdAsync(int? id)
         {
-            return await _productContext.Products.FindAsync(id);
+            return await _productContext.Products.Include(c => c.Category)
+                                    .SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<IEnumerable<Product>> GetProducstAsync()
         {
             return await _productContext.Products.ToListAsync();
-        }
-
-        public async Task<Product> GetProductCategoryAsync(int? id)
-        {
-            //Retorna o produto com a categoria relacionada a ele === eager load
-            return await _productContext.Products.Include(c => c.Category)
-                .SingleOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<Product> RemoveAsync(Product product)
