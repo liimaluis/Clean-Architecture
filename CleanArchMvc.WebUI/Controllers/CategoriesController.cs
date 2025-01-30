@@ -19,21 +19,68 @@ namespace CleanArchMvc.WebUI.Controllers
             return View(categories);
         }
 
-        // Retorna o formulário para a Criação da categoria
+        // Retorna o formulário para a Criação da Categoria
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // Ação que realiza a criação da categoria
+        // Ação que realiza a Criação da Categoria
         [HttpPost]
         public async Task<IActionResult> Create(CategoryDTO category)
         {
             if (ModelState.IsValid)
             {
-                await categoryService.Add(category);
-                return RedirectToAction("Index");
+                try
+                {
+                    await categoryService.Add(category);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception();
+                }
+
+            }
+            return View(category);
+        }
+
+        // Retorna o formulário para a Edição da Categoria
+        [HttpGet]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            
+            var categories = await categoryService.GetById(id);
+
+            if (categories == null)
+            {
+                return NotFound();
+            }
+
+            return View(categories);
+        }
+
+        // Ação que realiza a Edição da Categoria
+        [HttpPost]
+        public async Task<IActionResult> Edit(CategoryDTO category)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await categoryService.Update(category);
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception();
+                }
+
             }
             return View(category);
         }
