@@ -37,7 +37,7 @@ namespace CleanArchMvc.WebUI.Controllers
                     await categoryService.Add(category);
                     return RedirectToAction("Index");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new Exception();
                 }
@@ -76,13 +76,63 @@ namespace CleanArchMvc.WebUI.Controllers
                     await categoryService.Update(category);
                     return RedirectToAction("Index");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new Exception();
                 }
 
             }
             return View(category);
+        }
+
+        // Retorna o formulário para a Edição da Categoria
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var categories = await categoryService.GetById(id);
+
+            if (categories == null)
+            {
+                return NotFound();
+            }
+
+            return View(categories);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteConfirmed(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            await categoryService.Remove(id);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var categories = await categoryService.GetById(id);
+
+            if (categories == null)
+            {
+                return NotFound();
+            }
+
+            return View(categories);
         }
     }
 }
