@@ -1,0 +1,26 @@
+﻿@model CleanArchMvc.Application.DTOs.ProductDTO;
+
+<h3>Product Details</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dt class="col-sm-10">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit Product</a>
+    <a asp-action="Index">Back To List</a>
+</div>
