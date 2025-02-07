@@ -70,7 +70,8 @@ namespace CleanArchMvc.Domain.Entities
 
         public void Update(string name, string description, decimal price, int stock, string image, int categoryId)
         {
-            throw new NotImplementedException();
+            ValidationDomain(name, description, price, stock, image);
+            CategoryId = categoryId;
         }
 
         public int CategoryId { get; set; }
