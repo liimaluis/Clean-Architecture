@@ -1,3 +1,4 @@
+using CleanArchMvc.Domain.Account;
 using ClearArchMvc.Infra.Data.Context;
 using ClearArchMvc.Infra.Ioc;
 using Microsoft.EntityFrameworkCore;
@@ -37,6 +38,14 @@ namespace CleanArchMvc.WebUI
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            //using (var scope = app.Services.CreateScope())
+            //{
+            //    var services = scope.ServiceProvider;
+            //    var seedUserRoleInitial = services.GetRequiredService<ISeedUserRoleInitial>();
+            //    seedUserRoleInitial.SeedRoles();
+            //    seedUserRoleInitial.SeedUsers();
+            //}
 
             app.UseAuthorization();
 
