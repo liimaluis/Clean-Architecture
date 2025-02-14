@@ -44,7 +44,7 @@ namespace ClearArchMvc.Infra.Data.Identity
 
         public async Task Logout()
         {
-            throw new NotImplementedException();
+            await signInManager.SignOutAsync();
         }
     }
 }
