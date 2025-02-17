@@ -14,7 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CleanArchMvc.Application\CleanArchMvc.Application.csproj" />
     <ProjectReference Include="..\CleanArchMvc.Domain\CleanArchMvc.Domain.csproj" />
-    <ProjectReference Include="..\ClearArchMvc.Infra.Data\ClearArchMvc.Infra.Data.csproj" />
+    <ProjectReference Include="..\ClearArchMvc.Infra.Data\CleanArchMvc.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>
