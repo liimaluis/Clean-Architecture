@@ -3,7 +3,7 @@ using CleanArchMvc.Application.Mappings;
 using CleanArchMvc.Application.Service;
 using CleanArchMvc.Domain.Account;
 using CleanArchMvc.Domain.Interfaces;
-using ClearArchMvc.Infra.Data.Context;
+using CleanArchMvc.Infra.Data.Context;
 using ClearArchMvc.Infra.Data.Identity;
 using ClearArchMvc.Infra.Data.Repositories;
 using MediatR;
@@ -17,7 +17,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClearArchMvc.Infra.Ioc
+namespace CleanArchMvc.Infra.Ioc
 {
     public static class DependecyInjection
     {

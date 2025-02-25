@@ -1,6 +1,6 @@
 using CleanArchMvc.Domain.Account;
-using ClearArchMvc.Infra.Data.Context;
-using ClearArchMvc.Infra.Ioc;
+using CleanArchMvc.Infra.Data.Context;
+using CleanArchMvc.Infra.Ioc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchMvc.WebUI

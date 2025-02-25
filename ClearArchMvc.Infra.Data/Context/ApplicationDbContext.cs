@@ -8,7 +8,7 @@ using CleanArchMvc.Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using ClearArchMvc.Infra.Data.Identity;
 
-namespace ClearArchMvc.Infra.Data.Context
+namespace CleanArchMvc.Infra.Data.Context
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
