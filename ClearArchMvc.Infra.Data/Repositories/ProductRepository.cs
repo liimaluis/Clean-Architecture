@@ -1,6 +1,6 @@
 ﻿using CleanArchMvc.Domain.Entities;
 using CleanArchMvc.Domain.Interfaces;
-using ClearArchMvc.Infra.Data.Context;
+using CleanArchMvc.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

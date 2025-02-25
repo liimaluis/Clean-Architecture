@@ -1,46 +1,33 @@
+ï»¿using CleanArchMvc.Infra.Ioc;
+using CleanArchMvc.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
-using ClearArchMvc.Infra.Ioc;
-using ClearArchMvc.Infra.Data.Context;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-
-// Configuração da string de conexão
+// ConfiguraÃ§Ã£o da string de conexÃ£o
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-//Console.WriteLine($"Connection String: {connectionString}");
-
-// Registro do DbContext no contêiner de serviços
+// Registro do DbContext no contÃªiner de serviÃ§os
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
-// Adiciona o servicos configurados em Dependecy Injection
-builder.Services.AddControllers();
-builder.Services.AddAuthorization();
+
+// Adiciona serviÃ§os configurados em Dependecy Injection
 builder.Services.AddInfrastructureAPI(builder.Configuration);
+builder.Services.AddInfrastructureJWT(builder.Configuration);
+builder.Services.AddInfrastructureSwagger();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
 app.UseHttpsRedirection();
-
+app.UseStatusCodePages();
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapControllers();
-
-
 app.Run();
-
